@@ -1,9 +1,11 @@
 pipeline{
     agent any
     stages{
-        stage('Initial'){
+        stage('Build Image'){
             steps{
-                echo 'Inciando a pipeline'
+                script{
+                    dockerapp = docker.build("eliasdosreis/api-produto:", '-f ./src/Dockerfile ./src')
+                }
             }
         }
     }
